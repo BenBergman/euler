@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"math"
-)
+import "math"
 
 func SumOfNumbersDivisibleByThreeAndFive(n int) int {
 	sum := 0
@@ -13,8 +10,4 @@ func SumOfNumbersDivisibleByThreeAndFive(n int) int {
 		}
 	}
 	return sum
-}
-
-func main() {
-	fmt.Printf("%d\n", SumOfNumbersDivisibleByThreeAndFive(1000))
 }
