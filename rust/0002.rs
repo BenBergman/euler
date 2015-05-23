@@ -3,12 +3,22 @@ fn main() {
     for i in even_fibonacci_numbers_under_four_million() {
         println!("{}", i);
     }
-    println!("sum: {}", even_fibonacci_numbers_under_four_million().iter().fold(0, |sum, i| sum + i));
+    println!("sum: {}", sum_of_even_fibonacci_numbers_under_four_million());
 }
 
 
+fn sum_of_even_fibonacci_numbers_under_four_million() -> u32{
+    even_fibonacci_numbers_under_four_million()
+        .iter()
+        .fold(0, |sum, i| sum + i)
+}
+
 fn even_fibonacci_numbers_under_four_million() -> Vec<u32> {
-    fibonacci().take(35).filter(|&x| x < 4_000_000).filter(|&x| x % 2 == 0).collect()
+    fibonacci()
+        .take(35)
+        .filter(|&x| x % 2 == 0)
+        .filter(|&x| x < 4_000_000)
+        .collect()
 }
 
 
@@ -41,5 +51,5 @@ fn fibonacci() -> Fibonacci {
 
 #[test]
 fn matches_solution() {
-    assert_eq!(even_fibonacci_numbers_under_four_million().iter().fold(0, |sum, i| sum + i), 4613732);
+    assert_eq!(sum_of_even_fibonacci_numbers_under_four_million(), 4613732);
 }
