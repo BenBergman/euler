@@ -15,9 +15,8 @@ fn sum_of_even_fibonacci_numbers_under_four_million() -> u32{
 
 fn even_fibonacci_numbers_under_four_million() -> Vec<u32> {
     fibonacci()
-        .take(35)
         .filter(|&x| x % 2 == 0)
-        .filter(|&x| x < 4_000_000)
+        .take_while(|&x| x < 4_000_000)
         .collect()
 }
 
