@@ -71,10 +71,6 @@ fn is_prime(n: u64) -> bool {
         false
     } else if n == 2 {
         true
-    } else if n % 2 == 0 {
-        false
-    } else if n == 3 {
-        true
     } else {
         let limit = (n as f64).sqrt() as u64;
         for i in primes().take_while(|&x| x <= limit) {
