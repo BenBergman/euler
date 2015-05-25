@@ -36,6 +36,12 @@ fn largest_prime_factor(num: u64) -> u64 {
 }
 
 
+fn largest_prime_factor_functional(num: u64) -> u64 {
+    let limit = (num as f64).sqrt() as u64;
+    primes().take_while(|&x| x <= limit).filter(|&x| num % x == 0).max().unwrap()
+}
+
+
 struct Primes {
     current: u64,
 }
@@ -75,7 +81,6 @@ fn is_prime(n: u64) -> bool {
         let limit = (n as f64).sqrt() as u64;
         for i in primes().take_while(|&x| x <= limit) {
             if n % i == 0 {
-                println!("  it is!");
                 return false;
             }
         }
@@ -110,4 +115,10 @@ fn matches_example() {
 #[test]
 fn matches_solution() {
     assert_eq!(largest_prime_factor(600_851_475_143), 6857);
+}
+
+
+#[test]
+fn function_version_matches_solution() {
+    assert_eq!(largest_prime_factor_functional(600_851_475_143), 6857);
 }
